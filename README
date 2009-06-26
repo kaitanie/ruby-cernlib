@@ -1,0 +1,97 @@
+=begin RD
+
+= Ruby/CERNLIB
+
+a collection of Ruby extension libraries
+to access various CERN Program Library
+
+
+== about CERNLIB
+
+The CERN Program Library is a collection of general purpose programs
+maintained by CERN ASD group.
+The Web site is ((<URL:http://wwwinfo.cern.ch/asd/>))
+
+
+== about Ruby/CERNLIB
+
+Ruby/CERNLIB is a collection of Ruby extension libraries to access CERNLIB.
+Recent version of Ruby/CERNLIB is available from the Web site:
+((<URL:http://www-ps.kek.jp/thitoshi/ruby/cern/>))
+Ruby version 1.6.6 or later is required for Ruby/CERNLIB.
+
+Currently, Ruby/CERNLIB contains following modules.
+:Fortran
+  Fortran-style file I/O
+:HBook
+  Histograms and N-tuples
+:HIGZ
+  Graphics
+:HPlot
+  Histogram plottings
+:Mathlib
+  Mathematical routines
+:PHTools
+  Phase-space calculation
+:GEANT
+  Detector description and simulation tools
+:HBook2
+  More Object-Oriented Histogram and N-tuple classes
+
+Note that HBook2 module is very experimental,
+so implementations and API's may be changed in future release.
+GEANT module is also on early development stage
+and only a few routines are implemented.
+
+
+== Install
+
+Configuration and build;
+  % ruby extconf.rb
+  % make
+To install for system-wide use;
+  % su
+  # make install
+
+
+== Methods
+
+In HBook, HIGZ, HPlot, Mathlib, PHTools and GEANT modules,
+each CERNLIB routine is defined as a module function
+with a same name (all lower case).
+Subroutine arguments for output are included in a returned value,
+and you must give only input arguments to each method.
+For example, to get a content of ch#(1, 2) of a 2-dimensional histogram ID#10,
+  Real x, y
+  Call HIJXY(10, 1, 2, x, y)
+which can be written in Ruby/CERNLIB like
+  x, y = CERN::HBook.hijxy(10, 1, 2)
+Since Ruby's Array knows its length, you don't hove to specify a length
+of array as an method argument.
+For example, to draw a polyline with 4 points,
+  Dimension x(4), y(4)
+  Data x /1.4, 3.5, 4.5, 6.7/
+  Data y /4.1, 5.3, 5.4, 7.6/
+  Call IPL(4, x, y)
+in Ruby/CERNLIB
+  CERN::HIGZ.ipl [1.4, 3.5, 4.5, 6.7], [4.1, 5.3, 5.4, 7.6]
+Each common block is defined as a Struct-like object
+with an all-uppercase name.
+In the PHTools module, for instance, the number of outgoing particles
+can be set as
+  CERN::PHTools::GENIN.np = 4
+As For HBook2 module, see hbook2/hbook2.rd or hbook2/hbook2-ja.rd.
+
+
+== License
+
+Copyright (C) 1999 - 2003
+TAKAHASHI Hitoshi <hitoshi.takahashi@kek.jp>
+
+This program is free software; you can redistribute it and/or modify
+it under the same license terms as Ruby.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=end RD

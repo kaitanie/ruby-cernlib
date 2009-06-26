@@ -1,0 +1,42 @@
+= ChangeLog
+
+== ver 0.3 (2003/12/13)
+
+  * Now Ruby/CERNLIB can be built with Ruby 1.8. (Thanks to Juan Alcaraz.)
+  * Use packlib_noshift if it exists.
+    Ruby/CERNLIB seems not to work with "shift" libraries after year 2001.
+    (Thanks to Juan Alcaraz.)
+  * New modules: PHTools, GEANT.
+  * Fortran:
+    * Fix a bug in CERN::Fortran.close.
+  * HBook:
+    * Add methods: hproj1, hproj2.
+    * New example: subdir.rb.
+  * HPlot:
+    * Add methods: hplsiz, hplnt, hplnxt, hplusr, hplego, hplpto.
+    * Fix a bug in hpltab.
+    * Fix a bug in example/dice.rb.
+    * New example: hplotlego.rb.
+  * Mathlib:
+    * Add method: rannor.
+  * HBook2:
+    * Now subclasses can be made for each class.
+
+
+== ver 0.2 (2002/5/5)
+
+  * Now complex number is an instance of Complex class.
+  * New module: HBook2.
+  * Mathlib:
+    * Add routines for random number generation.
+
+
+== ver 0.1 (2002/4/15)
+
+  * Initial release.
+  * Included modules:
+    * Fortran
+    * HBook
+    * HIGZ
+    * HPlot
+    * Mathlib
